@@ -49,6 +49,7 @@ class  Staff(models.Model):
 class Employee(models.Model):
   GENDER_CHOICES = (('M', 'male'), ('F', 'Female'), ('U', 'Undefined'))
   name = models.CharField(max_length=60, unique=True, verbose_name='نام')
+  manager = models.ForeignKey('self', null=True, blank=True, on_delete=models.SET_NULL)
   age = models.IntegerField(verbose_name='سن')
   job = models.CharField(max_length=100)
   mobile = models.CharField(max_length=11, verbose_name='تلفن همراه')
@@ -70,7 +71,6 @@ class Passenger(models.Model):
   gender = models.CharField(
   max_length = 1, choices = GENDER_CHOICES, verbose_name = 'جنسیت')
   email = models.EmailField()
-  manager = models.ForeignKey('self', on_delete = models.CASCADE)
   flight = models.OneToOneField(Flight, on_delete=models.CASCADE)
   def __str__(self):
     return self.name
