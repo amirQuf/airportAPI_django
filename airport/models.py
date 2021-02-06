@@ -71,7 +71,7 @@ class Passenger(models.Model):
   gender = models.CharField(
   max_length = 1, choices = GENDER_CHOICES, verbose_name = 'جنسیت')
   email = models.EmailField()
-  flight = models.OneToOneField(Flight, on_delete=models.CASCADE)
+  flight = models.OneToOneField(Flight, on_delete=models.CASCADE) #wrong 
   def __str__(self):
     return self.name
   class Meta:
